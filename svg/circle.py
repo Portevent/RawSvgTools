@@ -2,6 +2,19 @@ from svg.colored_element import ColoredElement
 
 class Circle(ColoredElement):
 
+    def __init__(self, x: float | None = None, y: float | None = None, radius: float | None = None):
+        super().__init__()
+
+        if not x is None:
+            self.attributes['cx'] = str(x)
+
+        if not y is None:
+            self.attributes['cy'] = str(y)
+
+        if not radius is None:
+            self.attributes['r'] = str(radius)
+
+
     def getDefaultName(self) -> str:
         return "circle"
 

@@ -1,4 +1,6 @@
 # RawSvgTools
+![Static Badge](https://img.shields.io/badge/xmlns-http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg-blue)
+![Static Badge](https://img.shields.io/badge/v-0.1-green)
 
 Simple python library to create SVG images
 
@@ -55,7 +57,10 @@ Circle().radius(10).color(line="blue")
 <circle stroke="blue" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" cx="0" cy="0" r="10"/>
 ```
 
+## How to use
+See [the documentation](DOC.md)
 
 ## Notes
 The library is built with a method chaining syntax eventho Python isn't the best language to make proper use of it. \
 This decision is based on my personal preferences (I wanted to train a bit on this syntax), but also because this library may be rewritted in C# or Java for future projects. You don't have to chain method if you don't want to
+

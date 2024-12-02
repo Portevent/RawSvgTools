@@ -18,7 +18,7 @@ class SvgElement(ABC):
     content is a list of all element within this tag. If empty, the tag will self-closing (e.g. <circle />)
     defs is a list of all element this element refers to. See SvgDefElement class for further details
     """
-    name: str
+    _name: str
     attributes: dict[str, str]
 
     content: List['SvgElement'] = []
@@ -33,7 +33,7 @@ class SvgElement(ABC):
         raise NotImplementedError
 
     def __init__(self):
-        self.name = self.getDefaultName()
+        self._name = self.getDefaultName()
         self.attributes = self.getDefaultAttributes()
         self.content = []
         self.defs = []
@@ -79,10 +79,10 @@ class SvgElement(ABC):
         """
         Generate a hash, based on its name and parameters
         """
-        return f"{self.name}.{'.'.join([attributeToHash(key, value) for (key, value) in self.attributes.items()])}"
+        return f"{self._name}.{'.'.join([attributeToHash(key, value) for (key, value) in self.attributes.items()])}"
 
     def export(self) -> str:
-        return (f"<{self.name} {exportDict(self.attributes)}"
+        return (f"<{self._name} {exportDict(self.attributes)}"
                 + ("/>" if len(self.content) == 0 else
-                   (">\n" + '\n'.join([element.export() for element in self.content]) + '\n' + f"</{self.name}>")))
+                   (">\n" + '\n'.join([element.export() for element in self.content]) + '\n' + f"</{self._name}>")))
 
